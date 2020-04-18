@@ -1,21 +1,16 @@
 {
-  "name": "study-openjscad",
-  "version": "0.1.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "@jscad/csg": "^0.7.0"
-  },
+  "private": true,
+  "workspaces": [
+    "test"
+  ],
   "devDependencies": {
-    "@jscad/cli": "^1.10.0",
-    "prettier": "^2.0.4",
-    "typescript": "^3.8.3"
+    "prettier": "^2.0.4"
   },
   "scripts": {
-    "build": "yarn build:tsc && yarn build:openjscad",
-    "build:tsc": "tsc",
-    "build:openjscad": "openjscad dist/*.js",
-    "clean": "rm -rf dist",
-    "fmt": "prettier --write *.json src/*.ts src/**/*.ts"
+    "build-all": "for p in test; do cd $p; yarn build; done",
+    "clean": "rm -rf node_modules",
+    "clean-all": "yarn clean && for p in test; do cd $p; yarn clean; done",
+    "fmt": "prettier --write *.json",
+    "fmt-all": "yarn fmt && for p in test; do cd $p; yarn fmt; done"
   }
 }
