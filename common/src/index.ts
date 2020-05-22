@@ -1,4 +1,8 @@
 import * as printer from "./printer";
-import Context, { Quality } from "./context";
+import Context, {
+  Quality,
+  paramsToContext,
+  parameterDefinitions,
+} from "./context";
 
-export { printer, Context, Quality };
+export { printer, Context, Quality, paramsToContext, parameterDefinitions };

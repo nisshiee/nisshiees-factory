@@ -19,3 +19,23 @@ export default class Context {
     }
   }
 }
+
+export const parameterDefinitions = [
+  {
+    name: "quality",
+    type: "choice",
+    caption: "Quality:",
+    values: ["draft", "smooth"],
+    captions: ["Draft (no rounded corners)", "Smooth (rounded corners)"],
+    initial: "draft",
+  },
+];
+
+export function paramsToContext(params: any): Context {
+  let quality = Quality.Draft;
+  switch (params.quality) {
+    case "smooth":
+      quality = Quality.Smooth;
+  }
+  return new Context(quality);
+}
